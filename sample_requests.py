@@ -9,20 +9,20 @@ user_agents = {
 }
 
 # Function to make a request with a specified User-Agent
-def fetch_url(url, device):
-    headers = {'User-Agent': user_agents[device]}
+def fetch_url(url, headers):
     response = requests.get(url, headers=headers)
     return response.text
 
 # URL to request
 # url = "https://sh.58.com/"
-url = "https://www.kxdw.com/pcdown/141395/1/"
+url = "https://rtest.itemvs.com/test/test"
 
 # Fetch and print content as seen by different devices
 for device in user_agents:
     print(f"\nFetching content as {device} device...")
-    content = fetch_url(url, device)
+    headers = {'User-Agent': user_agents[device]}
+    # add more header
+    headers['Referer'] = 'https://www.baidu.com'
+    content = fetch_url(url=url, headers=headers)
     # print(content[:500])  # Print the first 500 characters of the response
     print(content)
-
-# Run the script to see the output
