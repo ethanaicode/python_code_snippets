@@ -21,21 +21,22 @@ def download_images(urls, save_dir):
         except requests.exceptions.RequestException as e:
             print(f"Failed to download {url}: {e}")
 
-# 读取json文件，获取json数据
-import json
-with open('./send_request/static/ai_list.json', 'r') as file:
-    image_urls_json_data = json.load(file)
+if __name__ == "__main__":
+    # 读取json文件，获取json数据
+    import json
+    with open('./send_request/static/ai_list.json', 'r') as file:
+        image_urls_json_data = json.load(file)
 
-# 处理json数据，获取图片url
-image_urls = []
-for urls in image_urls_json_data['ai_list']:
-    # 首先把urls['img']的https换成http
-    urls['img'] = urls['img'].replace('https', 'http')
-    # 读取图片url
-    image_urls.append(urls['img'])
+    # 处理json数据，获取图片url
+    image_urls = []
+    for urls in image_urls_json_data['ai_list']:
+        # 首先把urls['img']的https换成http
+        urls['img'] = urls['img'].replace('https', 'http')
+        # 读取图片url
+        image_urls.append(urls['img'])
 
-# 保存路径
-save_directory = './downloads/ai_images/'
+    # 设置保存路径
+    save_directory = './downloads/ai_images/'
 
-# 下载图片
-download_images(image_urls, save_directory)
+    # 开始下载图片
+    download_images(image_urls, save_directory)

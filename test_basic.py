@@ -1,6 +1,15 @@
-# funcCustom = lambda : print("Start downloading")
-i = 2
-while i > 0:
-    verify_code = input("Enter the verification code: ")
-    print(verify_code)
-    i -= 1
+import tkinter as tk
+
+window = tk.Tk()
+
+button = tk.Button(
+    text="Click me!",
+    width=25,
+    height=5,
+    bg="blue",
+    fg="yellow",
+)
+
+button.pack()
+
+window.mainloop()

@@ -27,6 +27,9 @@ def main(ip_port, url):
     proxy_options = {
         'proxy': {
             'http': 'http://' + ip_port,
+            'https': 'https://' + ip_port,
+            # 'http': 'socks5://127.0.0.1:9999',
+            # 'https': 'socks5://127.0.0.1:9999',
             'no_proxy': 'localhost,127.0.0.1'  # Bypass proxy for local addresses
         }
     }
@@ -48,12 +51,11 @@ def main(ip_port, url):
     driver.quit()
 
 if __name__ == '__main__':
-    username = 'username'
-    password = 'password'
 
-    # url = 'https://ipv4.geojs.io/'
+    # 要访问的网站
+    url = 'https://ipv4.geojs.io/'
     # url = 'https://ip138.com/'
-    url = 'https://rtest.itemvs.com/test/test'
+    # url = 'https://rtest.itemvs.com/test/test'
 
     # 获取代理ip列表
     ip_dict_list = get_ip_list()
@@ -61,6 +63,8 @@ if __name__ == '__main__':
     # 先只取第一个ip
     ip_dict = ip_dict_list[0]
     ip_port = f'{ip_dict.get("ip")}:{ip_dict.get("port")}'
+    # ip_port = ''
+
     # 用这个IP进行代理访问
     main(ip_port, url)
  
