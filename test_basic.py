@@ -1,26 +1,24 @@
-import random
-import bisect
-import os
+import unittest
 
-print(random.random())
+class SingletonFactory:
+    _instances = {}
 
-def custom_choice(questions, weights):
-    cumulative_weights = []
-    cumulative_sum = 0
+    @staticmethod
+    def get_instance(cls, *args, **kwargs):
+        if cls not in SingletonFactory._instances:
+            SingletonFactory._instances[cls] = cls(*args, **kwargs)
+        return SingletonFactory._instances[cls]
 
-    for weight in weights:
-        cumulative_sum += weight
-        cumulative_weights.append(cumulative_sum)
+class MyClass:
+    def __init__(self, value):
+        self.value = value
 
-    random_number = random.random() * cumulative_sum
-    index = bisect.bisect(cumulative_weights, random_number)
-    return questions[index]
+class TestSingletonFactory(unittest.TestCase):
+    def test_get_instance(self):
+        instance1 = SingletonFactory.get_instance(MyClass, 42)
+        instance2 = SingletonFactory.get_instance(MyClass, 42)
+        self.assertIs(instance1, instance2)
+        self.assertEqual(instance1.value, 43)
 
-# 问题列表和对应的权重值
-questions = ["问题1", "问题2", "问题3", "问题4"]
-weights = [0.1, 0.3, 0.4, 0.2]
-
-# selected_question = random.choices(questions, weights)[0]
-selected_question = custom_choice(questions, weights)
-
-print(f"抽取到的问题是: {selected_question}")
+if __name__ == '__main__':
+    unittest.main()
