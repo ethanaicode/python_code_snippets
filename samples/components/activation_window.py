@@ -35,8 +35,7 @@ class ActivationWindow(QDialog):
         self.is_closed = True  # 设置关闭标志
 
     def confirm_activation(self):
-        # is_activation_code_valid = self.activation_code_input.text() == '6666'
-        is_activation_code_valid = True
+        is_activation_code_valid = self.activation_code_input.text() == '6666'
         if is_activation_code_valid:
             # 验证通过，可以继续执行后续操作
             print("通过激活码成功登录")
