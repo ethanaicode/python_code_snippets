@@ -4,4 +4,5 @@ __pycache__
 logs
 *.log
 runtime
-data
+data/*
+!data/.gitkeep
