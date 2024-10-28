@@ -1,5 +1,10 @@
 import cv2
 
+"""
+目前测试这个方法是没有声音的
+而且视频会非常大，并不推荐，可以使用 moviepy 实现
+"""
+
 # 打开视频文件
 cap = cv2.VideoCapture('./data/input_video.mp4')
 
