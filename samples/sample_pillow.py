@@ -26,8 +26,8 @@ def get_image_info(image_path):
         return info
 
 # 读取两张ICO图像的详细信息
-image1_path = './static/images/doubao.ico'
-image2_path = './static/images/uitab.ico'
+image1_path = './assets/images/doubao.ico'
+image2_path = './assets/images/uitab.ico'
 
 image1_info = get_image_info(image1_path)
 image2_info = get_image_info(image2_path)

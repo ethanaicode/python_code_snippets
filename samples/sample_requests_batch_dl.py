@@ -24,7 +24,7 @@ def download_images(urls, save_dir):
 if __name__ == "__main__":
     # 读取json文件，获取json数据
     import json
-    with open('./send_request/static/ai_list.json', 'r') as file:
+    with open('./send_request/assets/ai_list.json', 'r') as file:
         image_urls_json_data = json.load(file)
 
     # 处理json数据，获取图片url
